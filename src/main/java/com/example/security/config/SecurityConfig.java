@@ -26,8 +26,8 @@ public class SecurityConfig{
                 .authorizeHttpRequests((authorize) ->
                 authorize//.requestMatchers("/admin/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
                         //.requestMatchers("/admin/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
-                        .requestMatchers("/admin/**").hasRole("ADMIN")// ROLE_ADMIN만 들어갈 수 있는 주소
-                        .requestMatchers("/login/**", "/join/**").permitAll() // 로그인, 회원 가입은 누구나 들어갈 수 있는 주소
+                        .requestMatchers("/admin/**").hasRole("ROLE_ADMIN")// ROLE_ADMIN만 들어갈 수 있는 주소
+                        .requestMatchers("/login/**", "/join/**", "/swagger-ui/**").permitAll() // 로그인, 회원 가입은 누구나 들어갈 수 있는 주소
                         .anyRequest().authenticated() // 인증만 되면 들어갈 수 있는 주소
                         // .anyRequest().authenticated() // 그 외의 주소는 모두 인증을 받아야 들어갈 수 있음
                 );
